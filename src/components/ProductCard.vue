@@ -19,12 +19,18 @@ const props = defineProps(['img', 'title', 'value', 'id']);
 }
 
 .product img {
-  width: 180px;
-  height: 180px;
+  max-width: 225px;
   border-radius: 8px;
 }
 
 .product__title {
   font-weight: 600;
+}
+
+@media(min-width: 550px){
+  .product img {
+  max-width: 250px;
+}
+
 }
 </style>

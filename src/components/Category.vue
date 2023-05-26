@@ -3,18 +3,22 @@ import { onMounted, ref } from 'vue';
 import ProductCard from './ProductCard.vue';
 import api from '../services/api';
 
-const props = defineProps(['name']);
+const props = defineProps(['id', 'name']);
 const products = ref([]);
 
-const fetchProducts = async (name) => {
-  await api.get(`/products/category/${name}`)
+const fetchProducts = async (id) => {
+  await api.get(`/categories/${id}/products`)
     .then((response) => {
-      products.value = response.data;
+      if(id !== 7 || id != 11){
+        for(let i = 0; i < 12; i++){
+          products.value.push(response.data[i])
+        }
+      }
     })
     .catch(error => console.error(error));
 }
 
-onMounted(fetchProducts(props.name));
+onMounted(fetchProducts(props.id));
 </script>
 
 <template>
@@ -22,7 +26,7 @@ onMounted(fetchProducts(props.name));
     <p>{{ name }}</p>
 
     <div class="category__products">
-      <ProductCard v-for="product in products" :key="product.id" :img="product.image"
+      <ProductCard v-for="product in products" :key="product.id" :img="product.images[0] || product.image"
         :title="product.title" :value="product.price" :id="product.id" />
     </div>
   </section>
@@ -38,8 +42,29 @@ onMounted(fetchProducts(props.name));
 }
 
 .category__products {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
 }
+
+@media (min-width: 500px) {
+  .category__products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    text-align: left;
+  }
+}
+
+@media (min-width: 850px) {
+  .category__products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .category__products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 </style>

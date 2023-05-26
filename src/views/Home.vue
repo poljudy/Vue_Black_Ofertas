@@ -8,9 +8,13 @@ import api from '../services/api';
 const categories = ref([]);
 
 const fetchCategories = async () => {
-  await api.get('/products/categories')
+  await api.get('/categories')
     .then((response) => {
-      categories.value = response.data;
+      for(let category of response.data){
+        if(category.id != 7 && category.id != 11){
+          categories.value.push(category)
+        }
+      }
     })
     .catch(error => console.error(error));
 }
@@ -28,10 +32,12 @@ onMounted(fetchCategories);
     <Banner />
 
     <div class="wrapper">
-      <input type="search" name="search" id="search" placeholder="Digite a busca aqui"
-        @input="event => filterProducts(event.target.value)" />
+      <div class="input">
+        <input type="search" name="search" id="search" placeholder="Digite a busca aqui"
+          @input="event => filterProducts(event.target.value)" />
+      </div>
 
-      <Category v-for="category in categories" :key="category" :name="category" />
+      <Category v-for="category in categories" :key="category.id" :id="category.id" :name="category.name" />
     </div>
   </div>
 
@@ -46,13 +52,19 @@ onMounted(fetchCategories);
 .wrapper {
   width: 90%;
 }
+.input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 input {
-  width: 100%;
+  width: 60%;
   border-radius: 8px;
   border: none;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   padding: 1.25rem;
+
 }
 
 input::placeholder {

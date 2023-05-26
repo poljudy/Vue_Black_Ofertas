@@ -23,8 +23,14 @@ const cartStore = useCartStore();
   left: 0;
   bottom: 0;
 }
-
 .q-tab:active {
   color: var(--blue);
 }
+
+@media(min-width: 600px){
+  .q-tab{
+    margin: 0 3rem;
+  }
+}
+
 </style>
