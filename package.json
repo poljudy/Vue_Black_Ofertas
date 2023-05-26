@@ -1,0 +1,27 @@
+{
+  "name": "infog2-test",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.15.4",
+    "pinia": "^2.0.22",
+    "pinia-plugin-persistedstate": "^2.2.0",
+    "quasar": "^2.9.2",
+    "vee-validate": "^4.6.10",
+    "vue": "^3.2.38",
+    "vue-router": "^4.1.5",
+    "vue-the-mask": "^0.11.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@quasar/vite-plugin": "^1.2.3",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "axios": "^0.27.2",
+    "sass": "^1.32.12",
+    "vite": "^3.0.9"
+  }
+}
