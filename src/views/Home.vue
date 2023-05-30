@@ -4,6 +4,8 @@ import Banner from '../components/Banner.vue';
 import BottomNav from '../components/BottomNav.vue';
 import Category from '../components/Category.vue';
 import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
+
 import api from '../services/api';
 
 const categories = ref([]);
@@ -11,14 +13,12 @@ const categories = ref([]);
 const fetchCategories = async () => {
   await api.get('/categories')
     .then((response) => {
-      categories.value = response.data;
+      for(let category of response.data){
+        if(category.id !== 9)
+          categories.value.push(category);
+      }
     })
     .catch(error => console.error(error));
-}
-
-async function filterProducts(search) {
-  await api.get(`/categorias/lu_estilo/?${search}=08`)
-    .then((response) => console.log(response.data));
 }
 
 onMounted(fetchCategories);
@@ -26,20 +26,16 @@ onMounted(fetchCategories);
 
 <template>
   <div class="home center">
-    <Header/>
+    <Header />
     <Banner />
 
     <div class="wrapper">
-      <div class="input">
-        <input type="search" name="search" id="search" placeholder="Digite a busca aqui" class="hide-for-desktop"
-          @input="event => filterProducts(event.target.value)" />
-      </div>
-
       <Category v-for="category in categories" :key="category.id" :id="category.id" :name="category.name" />
     </div>
   </div>
 
   <BottomNav />
+  <Footer />
 </template>
 
 <style scoped>

@@ -7,6 +7,7 @@ import CartProduct from '../components/CartProduct.vue';
 import PrimaryButton from '../components/PrimaryButton.vue';
 import EmptyCartIcon from '../components/EmptyCartIcon.vue';
 import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
 
 import { useCartStore } from '../stores/CartStore';
 const cartStore = useCartStore();
@@ -33,14 +34,14 @@ function showNotification() {
   <Header/>
 
   <section class="cart">
-    <h2>Carrinho</h2>
+    <h2 v-if="!cartStore.isEmpty">Carrinho</h2>
 
     <div class="cart__empty" v-if="cartStore.isEmpty">
       <EmptyCartIcon />
       <p>Carrinho vazio</p>
     </div>
 
-    <div class="cart__area" v-else>
+    <div class="cart__area" v-if="!cartStore.isEmpty">
       <CartProduct v-for="item in cartStore.items" :key="item.id" :id="item.id" :img="item.images[0]"
         :alt="item.description" :name="item.title" :value="item.price"
         :quantity="item.quantity" />
@@ -49,16 +50,16 @@ function showNotification() {
 
     </div>
 
-    <PrimaryButton to="/home" label="Finalizar compra" @click="finishCheckout" />
+    <PrimaryButton v-if="!cartStore.isEmpty" to="/home" label="Finalizar compra" @click="finishCheckout" />
   </section>
 
   <BottomNav />
+  <Footer />
 </template>
 
 <style scoped>
 .cart {
   padding: 3rem 2rem;
-  margin-bottom: 4rem;
 }
 
 .cart h2 {
@@ -70,11 +71,17 @@ function showNotification() {
   flex-direction: column;
   align-items: center;
 
-  padding: 8rem 0 14rem 0;
+  padding: 4rem 0;
 }
 
 .cart__empty p {
   margin-top: 1rem;
   margin-right: 1rem;
+}
+
+@media(min-width: 800px){
+  .cart__empty{
+    padding: 6rem 0 8rem 0;
+  }
 }
 </style>
