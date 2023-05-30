@@ -9,17 +9,6 @@ const cartStore = useCartStore();
   <section class="cart__info">
     <h3>Resumo da compra</h3>
 
-    <div>
-      <p>Subtotal</p>
-      <span>{{ formatCurrency(cartStore.subTotal) }}</span>
-    </div>
-
-    <div>
-      <p>Valor da entrega</p>
-      <span v-if="cartStore.deliveryTax === null">A calcular</span>
-      <span v-else>{{ formatCurrency(cartStore.deliveryTax) }}</span>
-    </div>
-
     <div class="total">
       <p>Valor total</p>
       <span>{{ formatCurrency(cartStore.totalValue) }}</span>

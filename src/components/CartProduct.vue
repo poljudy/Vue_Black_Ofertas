@@ -64,6 +64,7 @@ let quantity = props.quantity;
   width: 80px;
   height: 80px;
   margin-right: 1rem;
+  border-radius: 5px;
 }
 
 .card__left div {
@@ -84,7 +85,18 @@ let quantity = props.quantity;
 
 .cart__product select {
   margin-top: 1rem;
-
   border: none;
+}
+
+@media(min-width: 800px){
+  .cart__product{
+    padding: 1.5rem 3rem;
+  }
+
+  .card__left img {
+    width: 100px;
+    height: 100px;
+    margin-right: 2rem;
+  }
 }
 </style>

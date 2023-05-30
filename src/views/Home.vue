@@ -8,7 +8,7 @@ import api from '../services/api';
 const categories = ref([]);
 
 const fetchCategories = async () => {
-  await api.get('/products/categories')
+  await api.get('/categories')
     .then((response) => {
       categories.value = response.data;
     })
@@ -33,7 +33,7 @@ onMounted(fetchCategories);
           @input="event => filterProducts(event.target.value)" />
       </div>
 
-      <Category v-for="category in categories" :key="category" :name="category" />
+      <Category v-for="category in categories" :key="category.id" :id="category.id" :name="category.name" />
     </div>
   </div>
 

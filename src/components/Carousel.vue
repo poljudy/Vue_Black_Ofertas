@@ -6,7 +6,7 @@ const props = defineProps({
 });
 
 const slide = ref(0);
-const autoplay = ref(false);
+const autoplay = ref(true);
 </script>
 
 <template>

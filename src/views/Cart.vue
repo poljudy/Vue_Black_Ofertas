@@ -1,4 +1,6 @@
 <script setup>
+import { useQuasar } from 'quasar';
+
 import BottomNav from '../components/BottomNav.vue';
 import CartInfo from '../components/CartInfo.vue';
 import CartProduct from '../components/CartProduct.vue';
@@ -7,6 +9,23 @@ import EmptyCartIcon from '../components/EmptyCartIcon.vue';
 
 import { useCartStore } from '../stores/CartStore';
 const cartStore = useCartStore();
+
+const $q = useQuasar();
+
+const finishCheckout = () => {
+  showNotification();
+  cartStore.emptyCart();
+}
+
+function showNotification() {
+  $q.notify({
+    message: 'Compra realizada com sucesso',
+    color: 'positive',
+    icon: 'check_circle',
+    position: 'top',
+    timeout: 4000
+  });
+}
 </script>
 
 <template>
@@ -19,14 +38,15 @@ const cartStore = useCartStore();
     </div>
 
     <div class="cart__area" v-else>
-      <CartProduct v-for="item in cartStore.items" :key="item.id" :id="item.id" :img="item.images[0].image"
-        :alt="item.short_description" :name="item.description" :value="item.stocks[0].unit_price"
+      <CartProduct v-for="item in cartStore.items" :key="item.id" :id="item.id" :img="item.images[0]"
+        :alt="item.description" :name="item.title" :value="item.price"
         :quantity="item.quantity" />
 
       <CartInfo />
 
-      <PrimaryButton to="/access" label="Finalizar compra" />
     </div>
+
+    <PrimaryButton to="/home" label="Finalizar compra" @click="finishCheckout" />
   </section>
 
   <BottomNav />

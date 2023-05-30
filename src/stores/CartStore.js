@@ -52,7 +52,7 @@ export const useCartStore = defineStore('CartStore', {
       let total = 0;
 
       for (let item of this.items) {
-        total += (item.stocks[0].unit_price * item.quantity);
+        total += (item.price * item.quantity);
       }
 
       this.subTotal = total;
