@@ -39,19 +39,16 @@ onMounted(getProduct(route.params.id));
 
 <template>
   <div class="product" v-if="product">
-    <Carousel :images="product.images" />
+    <div class="product__container">
+      <Carousel :images="product.images" />
 
-    <div class="product__content">
-      <h2 class="product__name">{{product.title}}</h2>
+      <div class="product__content">
+        <h2 class="product__name">{{product.title}}</h2>
 
-      <div class="product__description">
-        <p>Descrição</p>
-        <p>{{product.description}}</p>
-      </div>
-
-      <div class="product__comment">
-        <p>Você quer adicionar alguma observação?</p>
-        <input type="text" name="comment" id="comment" placeholder="Digite aqui...">
+        <div class="product__description">
+          <p>Descrição</p>
+          <p>{{product.description}}</p>
+        </div>
       </div>
     </div>
 
@@ -72,6 +69,8 @@ onMounted(getProduct(route.params.id));
 .product {
   display: flex;
   flex-direction: column;
+
+  min-height: 100vh;
 }
 
 .product__content {
@@ -93,23 +92,9 @@ onMounted(getProduct(route.params.id));
 .product__description p {
   margin: .5rem 0;
 }
-
-.product__comment {
-  margin-bottom: 1rem;
-}
-
-.product__comment input {
-  width: 90%;
-  border-radius: 8px;
-  border: none;
-  margin: 1rem 0;
-  padding: 1em;
-  font-size: 1rem;
-}
-
 .bottomsheet {
   background: var(--red);
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -130,5 +115,26 @@ onMounted(getProduct(route.params.id));
 .bottomsheet a {
   color: var(--white);
   font-weight: 600;
+}
+
+.bottomsheet a:hover{
+  text-decoration: underline;
+}
+
+@media(min-width: 800px){
+  .product__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+  }
+
+  .product__content{
+    margin: auto;
+  }
+
+  .bottomsheet{
+    justify-content: space-around;
+    padding: 1rem 2rem;
+  }
 }
 </style>
