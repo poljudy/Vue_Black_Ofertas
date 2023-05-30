@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import Banner from '../components/Banner.vue';
 import BottomNav from '../components/BottomNav.vue';
 import Category from '../components/Category.vue';
+import Header from '../components/Header.vue';
 import api from '../services/api';
 
 const categories = ref([]);
@@ -25,11 +26,12 @@ onMounted(fetchCategories);
 
 <template>
   <div class="home center">
+    <Header/>
     <Banner />
 
     <div class="wrapper">
       <div class="input">
-        <input type="search" name="search" id="search" placeholder="Digite a busca aqui"
+        <input type="search" name="search" id="search" placeholder="Digite a busca aqui" class="hide-for-desktop"
           @input="event => filterProducts(event.target.value)" />
       </div>
 

@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import { useQuasar } from 'quasar';
 
 import Carousel from '../components/Carousel.vue';
+import Header from '../components/Header.vue';
 
 import api from '../services/api';
 import formatCurrency from '../helpers/formatCurrency';
@@ -38,6 +39,8 @@ onMounted(getProduct(route.params.id));
 </script>
 
 <template>
+  <Header/>
+
   <div class="product" v-if="product">
     <div class="product__container">
       <Carousel :images="product.images" />

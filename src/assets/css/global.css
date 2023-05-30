@@ -77,3 +77,15 @@ input {
 legend {
   color: var(--white);
 }
+
+.hide-for-desktop{
+  @media(min-width: 800px){
+    display: none;
+  }
+}
+
+.hide-for-mobile {
+  @media(max-width: 799px){
+    display: none;
+  }
+}

@@ -10,15 +10,13 @@ import { Quasar, Notify } from 'quasar';
 import 'quasar/dist/quasar.css';
 import '@quasar/extras/material-icons/material-icons.css';
 
-import VueTheMask from 'vue-the-mask';
-
 import './assets/css/reset.css';
 import './assets/css/global.css';
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
 
-createApp(App).use(router).use(pinia).use(VueTheMask).use(Quasar, {
+createApp(App).use(router).use(pinia).use(Quasar, {
   plugins: {
     Notify
   }

@@ -6,6 +6,7 @@ import CartInfo from '../components/CartInfo.vue';
 import CartProduct from '../components/CartProduct.vue';
 import PrimaryButton from '../components/PrimaryButton.vue';
 import EmptyCartIcon from '../components/EmptyCartIcon.vue';
+import Header from '../components/Header.vue';
 
 import { useCartStore } from '../stores/CartStore';
 const cartStore = useCartStore();
@@ -29,6 +30,8 @@ function showNotification() {
 </script>
 
 <template>
+  <Header/>
+
   <section class="cart">
     <h2>Carrinho</h2>
 

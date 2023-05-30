@@ -5,5 +5,6 @@
 <style scoped>
 .banner {
   width: 100%;
+  margin-bottom: 2rem;
 }
 </style>
