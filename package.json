@@ -11,11 +11,8 @@
     "pinia": "^2.0.22",
     "pinia-plugin-persistedstate": "^2.2.0",
     "quasar": "^2.9.2",
-    "vee-validate": "^4.6.10",
     "vue": "^3.2.38",
-    "vue-router": "^4.1.5",
-    "vue-the-mask": "^0.11.1",
-    "yup": "^0.32.11"
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.2.3",
