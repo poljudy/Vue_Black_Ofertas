@@ -5,6 +5,5 @@
 <style scoped>
 .banner {
   width: 100%;
-  max-height: 475px;
 }
 </style>

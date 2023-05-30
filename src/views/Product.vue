@@ -16,9 +16,9 @@ const cartStore = useCartStore();
 const $q = useQuasar();
 
 const getProduct = async (id) => {
-  await api.get(`/produtos/?ids=${id}`)
+  await api.get(`/products/${id}`)
     .then(response => {
-      product.value = response.data[0];
+      product.value = response.data;
     })
     .catch(error => console.error(error));
 }
@@ -42,11 +42,11 @@ onMounted(getProduct(route.params.id));
     <Carousel :images="product.images" />
 
     <div class="product__content">
-      <h2 class="product__name">{{product.description}}</h2>
+      <h2 class="product__name">{{product.title}}</h2>
 
       <div class="product__description">
         <p>Descrição</p>
-        <p>{{product.short_description}}</p>
+        <p>{{product.description}}</p>
       </div>
 
       <div class="product__comment">
@@ -57,8 +57,8 @@ onMounted(getProduct(route.params.id));
 
     <div class="bottomsheet">
       <div>
-        <h2>{{ formatCurrency(product.stocks[0].unit_price) }}</h2>
-        <p>Ou até 3x de R$ {{ formatCurrency(product.stocks[0].unit_price / 3) }} sem juros</p>
+        <h2>{{ formatCurrency(product.price) }}</h2>
+        <p>Ou até 3x de R$ {{ formatCurrency(product.price / 3) }} sem juros</p>
       </div>
 
       <router-link to="/cart" @click="[cartStore.addToCart(product), showNotification()]">
@@ -70,8 +70,6 @@ onMounted(getProduct(route.params.id));
 
 <style scoped>
 .product {
-  height: 100vh;
-
   display: flex;
   flex-direction: column;
 }

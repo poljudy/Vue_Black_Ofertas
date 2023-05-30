@@ -8,13 +8,9 @@ import api from '../services/api';
 const categories = ref([]);
 
 const fetchCategories = async () => {
-  await api.get('/categories')
+  await api.get('/products/categories')
     .then((response) => {
-      for(let category of response.data){
-        if(category.id != 7 && category.id != 11){
-          categories.value.push(category)
-        }
-      }
+      categories.value = response.data;
     })
     .catch(error => console.error(error));
 }
@@ -37,7 +33,7 @@ onMounted(fetchCategories);
           @input="event => filterProducts(event.target.value)" />
       </div>
 
-      <Category v-for="category in categories" :key="category.id" :id="category.id" :name="category.name" />
+      <Category v-for="category in categories" :key="category" :name="category" />
     </div>
   </div>
 

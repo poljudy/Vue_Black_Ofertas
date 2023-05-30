@@ -11,7 +11,7 @@ import Register from '../views/Register.vue';
 const routes = [
   { path: '/', component: Home },
   { path: '/home', redirect: '/' },
-  { path: '/product/:id', component: Product },
+  { path: '/products/:id', component: Product },
   { path: '/cart', component: Cart },
   { path: '/access', component: Access },
   { path: '/login', component: Login },

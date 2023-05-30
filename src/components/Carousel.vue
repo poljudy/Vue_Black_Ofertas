@@ -13,7 +13,7 @@ const autoplay = ref(true);
   <q-carousel v-model="slide" animated arrows navigation infinite :autoplay="autoplay" control-color="red">
 
     <q-carousel-slide v-for="image in props.images" :name="props.images.findIndex(item => item === image)"
-      :img-src="image.image" />
+      :img-src="image" />
 
   </q-carousel>
 </template>

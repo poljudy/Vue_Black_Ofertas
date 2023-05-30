@@ -1,13 +1,13 @@
 <script setup>
 import formatCurrency from '../helpers/formatCurrency';
-const props = defineProps(['img', 'title', 'value', 'id']);
+const props = defineProps(['img', 'title', 'price', 'id']);
 </script>
 
 <template>
-  <router-link :to="`/product/${props.id}`" class="product">
+  <router-link :to="`/products/${props.id}`" class="product">
     <img v-bind:src="props.img" alt="Produto" loading="lazy">
     <p class="product__title">{{props.title}}</p>
-    <p class="product__value">{{formatCurrency(props.value)}}</p>
+    <p class="product__value">{{formatCurrency(props.price)}}</p>
   </router-link>
 
 </template>
