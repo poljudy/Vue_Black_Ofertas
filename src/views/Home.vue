@@ -14,7 +14,7 @@ const fetchCategories = async () => {
   await api.get('/categories')
     .then((response) => {
       for(let category of response.data){
-        if(category.id !== 9)
+        if(category.id <= 5)
           categories.value.push(category);
       }
     })
