@@ -1,5 +1,5 @@
 {
-  "name": "infog2-test",
+  "name": "vue-ecommerce",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
