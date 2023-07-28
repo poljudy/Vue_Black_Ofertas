@@ -1,6 +1,6 @@
 # Teste de codificação de desenvolvedor front-end
 
-![screenshot](https://github.com/guisantosfr/vue-ecommerce/assets/32960040/5e616df4-df0d-433e-9a1e-8bc3f973e8a8)
+![screenshot](https://github.com/poljudy/Vue_Black_Ofertas/assets/32960040/5e616df4-df0d-433e-9a1e-8bc3f973e8a8)
 
 ## Sobre o projeto
 
@@ -35,7 +35,7 @@ Implementação desenvolvida para um teste de codificação para vaga de estági
 ### Clonando o repositório
 
 ```bash
-  git clone https://github.com/guisantosfr/vue-ecommerce
+  git clone https://github.com/poljudy/Vue_Black_Ofertas
 ```
 
 ### Instalando dependências
@@ -49,7 +49,3 @@ Implementação desenvolvida para um teste de codificação para vaga de estági
 ```bash
   npm run dev
 ```
-
-## Autor
-
-- [Guilherme Santos](https://www.linkedin.com/in/guisantosfr/)
