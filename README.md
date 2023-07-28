@@ -1,7 +1,3 @@
-# Teste de codificação de desenvolvedor front-end
-
-![screenshot](https://github.com/poljudy/Vue_Black_Ofertas/assets/32960040/5e616df4-df0d-433e-9a1e-8bc3f973e8a8)
-
 ## Sobre o projeto
 
 Implementação desenvolvida para um teste de codificação para vaga de estágio em desenvolvimento front-end.
